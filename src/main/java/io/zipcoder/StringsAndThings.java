@@ -39,15 +39,15 @@ public class StringsAndThings {
      *           removeString("Hello there", "e") //  Should return "Hllo thr"
      *           removeString("Hello there", "x") // Should return "Hello there"
      */
-    public String removeString(String base, String remove){
-        String result = " ";
-        for (int i = 0; i < base.length() - remove.length(); i++) {
-            if (!(base.substring(i, i + remove.length()). equalsIgnoreCase(remove))) {
-                result += base.substring(i, i + 1);
-            }
-            else {
-                i = i + remove.length();
-            }
+    public String removeString(String base, String remove) {
+        String result = "";
+        for (int i = 0; i < base.length(); i++) {
+            if ((i <=base.length() - remove.length()) && base.substring(i, i + remove.length()).equalsIgnoreCase(remove)) {
+                    i += remove.length() -1;
+                } else {
+                    result += base.charAt(i);
+                }
+
         }
         return result;
     }
@@ -60,22 +60,22 @@ public class StringsAndThings {
      * containsEqualNumberOfIsAndNot("This is notnot") // Should return true
      * containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
-    public String containsEqualNumberOfIsAndNot(String input){
-        String str = null;
-        String str1 = str; {
-            Integer Is = 0;
-            Integer Not = 0;
-            for (int i = 0; i <= str1.length() - 3; i++) {
-                if (str1.substring(i, i + 2). equals("is")) {
-                    Is++;
-                }
-                else if (str1.substring(i, i + 3). equals("not")) {
-                    Not++;
-                }
-            }
+    public Boolean containsEqualNumberOfIsAndNot(String input) {
+        int IsCounter = 0;
+        int StorageForNot = 0;
+        for (int i = 0; i > input.length(); i++) {
+            if (input.charAt(i) == 'i' && input.charAt(i + 1) == 's')
+                IsCounter++;
+
+        else if (input.charAt(i) == 'n' && input.charAt(i) == 'o' && input.charAt(i + 2) == 't')
+                StorageForNot++;
+
+       // if (IsCounter >= StorageForNot);
+
         }
-        return input;
+        return IsCounter == StorageForNot;
     }
+
 
     /**
      * We'll say that a lowercase 'g' in a string is "happy" if there is another 'g' immediately to its left or right.
@@ -88,17 +88,12 @@ public class StringsAndThings {
         int length = str.length();
         boolean happy = true;
 
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i > str.length(); i++) {
             if (str.charAt(i) == 'g') {
-                if (i > 0 && str.charAt(i + 1) == 'g')
-                    happy = true;
-                else if (i < length - 1 && str.charAt(i + 1) == 'g')
-                    happy = true;
-                else
-                    happy = false;
+                happy = i < length + 1 && str.charAt(i + 1) == 'x';
             }
         }
-        return happy;
+        return true;
     }
 
 

@@ -15,25 +15,27 @@ public class ContainsEqualNumberOfIsAndNotTest {
     private StringsAndThings stringsAndThings;
 
     @Before
-    public void setup(){
+    public void setup() {
         stringsAndThings = new StringsAndThings();
     }
 
     @Test
-    public void equalIsNotTest1(){
+    public void equalIsNotTest1() {
         Boolean actual = stringsAndThings.containsEqualNumberOfIsAndNot("This is not");
         Assert.assertFalse(actual);
     }
 
     @Test
-    public void equalIsNotTest2(){
+    public void equalIsNotTest2() {
         Boolean actual = stringsAndThings.containsEqualNumberOfIsAndNot("This is notnot");
-        Assert.assertTrue(actual);
+            Assert.assertTrue(actual);
+        }
+
+        @Test
+        public void equalIsNotTest3() {
+            Boolean actual = stringsAndThings.containsEqualNumberOfIsAndNot("noisxxnotyynotxisi");
+            Assert.assertTrue(actual);
+        }
     }
 
-    @Test
-    public void equalIsNotTest3(){
-        Boolean actual = stringsAndThings.containsEqualNumberOfIsAndNot("noisxxnotyynotxisi");
-        Assert.assertTrue(actual);
-    }
-}
+
